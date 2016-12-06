@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-6">
+   <form action="/" method="post">
+    <div class="input-group">
+      <input type="text" class="form-control" id="beehive-id" name="tag" value="<%= tag %>">
+      <span class="input-group-btn">
+        <button class="btn btn-default" data-clipboard-target="#beehive-id">
+          <span class="glyphicon glyphicon-copy" aria-hidden="true" alt="Copy to clipboard"></span>
+          <span class="sr-only">Copy</span>
+        </button>
+      </span>
+    </div><!-- /.input-group -->
+  </form>
+</div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<div class="row">
+&nbsp;
+</div>
+<div class="row">
+  <div class="col-lg-6">
+  <% if last_copy && last_copy != '' %>
+    <p id="last-copy">Copied to clipboard: <%= last_copy %></p>
+  <% end %>
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/clipboard.js"></script>
+<script>
+  var clipboard = new Clipboard('.btn');
+
+  $('#beehive-id').on('click', function(e) {
+    $(this).closest('form').submit();
+  });
+</script>
